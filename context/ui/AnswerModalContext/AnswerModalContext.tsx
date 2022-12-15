@@ -2,7 +2,7 @@ import React, { PropsWithChildren, useContext, useState } from "react";
 import Post from "../../../models/post";
 import { UserInfo } from "../../../models/user";
 
-interface ModalContextProps {
+interface AnswerModalContextProps {
   isOpen: boolean;
   setOpen: (x: boolean) => void;
   userInfo: UserInfo | null;
@@ -11,7 +11,7 @@ interface ModalContextProps {
   setPost: (post: Post) => void;
 }
 
-export const ModalContext = React.createContext<ModalContextProps>({
+export const AnswerModalContext = React.createContext<AnswerModalContextProps>({
   isOpen: false,
   setOpen: (x: boolean) => {},
   userInfo: null,
@@ -26,12 +26,12 @@ export const ModalProvider = ({ children }: PropsWithChildren) => {
   const [post, setPost] = useState<Post | null>(null);
 
   return (
-    <ModalContext.Provider
+    <AnswerModalContext.Provider
       value={{ isOpen, setOpen, userInfo, setUserInfo, post, setPost }}
     >
       {children}
-    </ModalContext.Provider>
+    </AnswerModalContext.Provider>
   );
 };
 
-export const useModal = () => useContext(ModalContext);
+export const useAnswerModal = () => useContext(AnswerModalContext);

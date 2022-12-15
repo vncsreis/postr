@@ -22,7 +22,7 @@ interface PostCardProps {
 
 export default function PostCard({ post, userInfo }: PostCardProps) {
   const [isFavourite, setIsFavourite] = useState(false);
-  const { setOpen } = useModal();
+  const { setOpen, setPost, setUserInfo } = useModal();
 
   const now = new Date();
 
@@ -49,6 +49,8 @@ export default function PostCard({ post, userInfo }: PostCardProps) {
   }
 
   function handleAnswer() {
+    setPost(post);
+    setUserInfo(userInfo);
     setOpen(true);
   }
 

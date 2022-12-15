@@ -1,3 +1,3 @@
-import { useModal } from "./ui/ModalContext/ModalContext";
+import { useAnswerModal } from "./ui/AnswerModalContext/AnswerModalContext";
 
-export { useModal };
+export { useAnswerModal as useModal };
