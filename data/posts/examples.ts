@@ -23,3 +23,5 @@ export const post02: Post = {
   text: "This is post 2",
   userId: "2",
 };
+
+export const posts = [post01, post02];

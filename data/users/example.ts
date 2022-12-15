@@ -11,3 +11,5 @@ export const user02: UserInfo = {
   name: "Susan Test",
   username: "susantest",
 };
+
+export const users = [user01, user02];
