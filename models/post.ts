@@ -7,5 +7,5 @@ export default interface Post {
   likes: number;
   date: Date;
   edited: boolean;
-  lastVersion: string;
+  lastVersion: string | null;
 }
