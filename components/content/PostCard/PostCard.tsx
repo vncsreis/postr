@@ -9,10 +9,18 @@ import {
 } from "react-icons/ai";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { useModal } from "../../../context";
+import Post from "../../../models/post";
+import { UserInfo } from "../../../models/user";
+import getTimeElapsed from "./getTimeElaped";
 
 const iconSize = 25;
 
-export default function PostCard() {
+interface PostCardProps {
+  post: Post;
+  userInfo: UserInfo;
+}
+
+export default function PostCard({ post, userInfo }: PostCardProps) {
   const [isFavourite, setIsFavourite] = useState(false);
   const { setOpen } = useModal();
 
@@ -35,12 +43,12 @@ export default function PostCard() {
       <Avatar name="Bob Test" />
       <Box pl="4" display="flex" flexDir="column">
         <Box display="flex" flexDir="row" alignItems="center" gap="2">
-          <Heading fontSize="md">Bob Test</Heading>
+          <Heading fontSize="md">{userInfo.name}</Heading>
           <Text fontSize="md" color="gray.500">
-            @testing
+            @{userInfo.username}
           </Text>
           <Text fontSize="md" color="gray.500">
-            • 10m
+            • {getTimeElapsed(post.date, new Date())}
           </Text>
 
           <IconButton
@@ -53,12 +61,7 @@ export default function PostCard() {
         </Box>
 
         <Text mb="12" mt="4">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book. It has survived not
-          only five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged.
+          {post.text}
         </Text>
         <Box
           w="85%"
