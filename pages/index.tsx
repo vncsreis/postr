@@ -5,13 +5,15 @@ import {
   PostCard,
   SuggestionFollowCard,
 } from "../components/content";
+import RepostModal from "../components/content/RepostModal/RepostModal";
 import { Sidebar, Suggestions } from "../components/layout";
-import { useModal } from "../context";
+import { useAnswerModal, useRepostModal } from "../context";
 import { post01 } from "../data/posts/examples";
 import { user01 } from "../data/users/example";
 
 export default function Home() {
-  const { isOpen } = useModal();
+  const { isOpen: isAnswerModalOpen } = useAnswerModal();
+  const { isOpen: isRepostModalOpen } = useRepostModal();
 
   return (
     <Box
@@ -20,7 +22,9 @@ export default function Home() {
       backgroundColor="twitter.50"
       height="100%"
     >
-      <AnswerPostModal isOpen={isOpen} />
+      <AnswerPostModal isOpen={isAnswerModalOpen} />
+      <RepostModal isOpen={isRepostModalOpen} />
+
       <Box h="100%" flex="1" pr="2">
         <Sidebar />
       </Box>

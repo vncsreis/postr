@@ -1,11 +1,11 @@
 import { Avatar, Box, Heading, Text } from "@chakra-ui/react";
-import { useModal } from "../../../context";
+import { useAnswerModal } from "../../../context";
 import getTimeElapsed from "../PostCard/getTimeElapsed";
 
 export default function AnsweredPostCard() {
   const now = new Date();
 
-  const { setOpen, post, userInfo } = useModal();
+  const { setOpen, post, userInfo } = useAnswerModal();
 
   if (!userInfo || !post) {
     setOpen(false);

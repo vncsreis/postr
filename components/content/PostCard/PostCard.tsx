@@ -8,7 +8,7 @@ import {
   AiOutlineStar,
 } from "react-icons/ai";
 import { IoEllipsisVertical } from "react-icons/io5";
-import { useModal } from "../../../context";
+import { useAnswerModal, useRepostModal } from "../../../context";
 import Post from "../../../models/post";
 import { UserInfo } from "../../../models/user";
 import getTimeElapsed from "./getTimeElapsed";
@@ -22,7 +22,8 @@ interface PostCardProps {
 
 export default function PostCard({ post, userInfo }: PostCardProps) {
   const [isFavourite, setIsFavourite] = useState(false);
-  const { setOpen, setPost, setUserInfo } = useModal();
+  const { setOpen, setPost, setUserInfo } = useAnswerModal();
+  const { setOpen: setOpenRepost } = useRepostModal();
 
   const now = new Date();
 
@@ -98,7 +99,11 @@ export default function PostCard({ post, userInfo }: PostCardProps) {
           >
             <AiOutlineMessage size={iconSize} />
           </IconButton>
-          <IconButton aria-label="Repost" backgroundColor="#00000000">
+          <IconButton
+            aria-label="Repost"
+            backgroundColor="#00000000"
+            onClick={() => setOpenRepost(true)}
+          >
             <AiOutlineRetweet size={iconSize} />
           </IconButton>
 

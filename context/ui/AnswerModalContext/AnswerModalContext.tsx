@@ -20,7 +20,7 @@ export const AnswerModalContext = React.createContext<AnswerModalContextProps>({
   setPost: (p: Post) => {},
 });
 
-export const ModalProvider = ({ children }: PropsWithChildren) => {
+export const AnswerModalProvider = ({ children }: PropsWithChildren) => {
   const [isOpen, setOpen] = useState(false);
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [post, setPost] = useState<Post | null>(null);
