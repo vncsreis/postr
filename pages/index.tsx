@@ -8,8 +8,9 @@ import {
 import RepostModal from "../components/content/RepostModal/RepostModal";
 import { Sidebar, Suggestions } from "../components/layout";
 import { useAnswerModal, useRepostModal } from "../context";
-import { post01 } from "../data/posts/examples";
-import { user01 } from "../data/users/example";
+import { posts } from "../data/posts/examples";
+import { users } from "../data/users/example";
+import { UserInfo } from "../models/user";
 
 export default function Home() {
   const { isOpen: isAnswerModalOpen } = useAnswerModal();
@@ -32,7 +33,13 @@ export default function Home() {
       <Box w="60%">
         <InputPost />
 
-        <PostCard post={post01} userInfo={user01} />
+        {posts.map((post) => {
+          const user = users.find(
+            (info) => info.id === post.userId
+          ) as UserInfo;
+
+          return <PostCard key={post.id} post={post} userInfo={user} />;
+        })}
       </Box>
       <Box flex="1" h="100%" pl="2">
         <Suggestions>
