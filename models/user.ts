@@ -3,12 +3,14 @@ export default interface User {
   followers: string[] | null;
   following: string[] | null;
   posts: string[] | null;
-}
-
-export interface UserInfo {
-  id: string;
   email: string;
   username: string;
   name: string;
   hashPassword: string;
+}
+
+export interface UserInfo {
+  id: string;
+  username: string;
+  name: string;
 }
