@@ -5,3 +5,9 @@ export const user01: UserInfo = {
   name: "Bob Test",
   username: "bobtest",
 };
+
+export const user02: UserInfo = {
+  id: "2",
+  name: "Susan Test",
+  username: "susantest",
+};
