@@ -1,5 +1,6 @@
 import { Box, Divider, Heading, List, ListItem, Text } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Sidebar() {
   return (
@@ -18,27 +19,31 @@ export default function Sidebar() {
       </Box>
       <List w="100%" alignItems="center">
         <Divider orientation="horizontal" />
-        <ListItem p="2">
-          <Text
-            textAlign="center"
-            color="twitter.500"
-            fontSize="lg"
-            fontWeight="semibold"
-          >
-            Home
-          </Text>
-        </ListItem>
+        <Link href="/">
+          <ListItem p="2">
+            <Text
+              textAlign="center"
+              color="twitter.500"
+              fontSize="lg"
+              fontWeight="semibold"
+            >
+              Home
+            </Text>
+          </ListItem>
+        </Link>
         <Divider orientation="horizontal" />
-        <ListItem p="2">
-          <Text
-            textAlign="center"
-            color="twitter.500"
-            fontSize="lg"
-            fontWeight="semibold"
-          >
-            Profile
-          </Text>
-        </ListItem>
+        <Link href="/profile/1">
+          <ListItem p="2">
+            <Text
+              textAlign="center"
+              color="twitter.500"
+              fontSize="lg"
+              fontWeight="semibold"
+            >
+              Profile
+            </Text>
+          </ListItem>
+        </Link>
       </List>
     </Box>
   );
