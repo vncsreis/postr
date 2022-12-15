@@ -1,10 +1,11 @@
 import { Box } from "@chakra-ui/react";
-import { AnswerPostModal, InputPost, PostCard } from "../components/content";
 import {
-  Sidebar,
+  AnswerPostModal,
+  InputPost,
+  PostCard,
   SuggestionFollowCard,
-  Suggestions,
-} from "../components/layout";
+} from "../components/content";
+import { Sidebar, Suggestions } from "../components/layout";
 import { useModal } from "../context";
 
 export default function Home() {
