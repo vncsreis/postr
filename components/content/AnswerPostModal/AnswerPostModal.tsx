@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { useModal } from "../../../context";
+import { useAnswerModal } from "../../../context";
 import AnsweredPostCard from "./AnsweredPostCard";
 
 interface AnswerPostModalProps {
@@ -22,7 +22,7 @@ interface AnswerPostModalProps {
 
 export default function AnswerPostModal({ isOpen }: AnswerPostModalProps) {
   const [content, setContent] = useState("");
-  const { setOpen } = useModal();
+  const { setOpen } = useAnswerModal();
 
   function handlePost() {
     if (content !== "") {
