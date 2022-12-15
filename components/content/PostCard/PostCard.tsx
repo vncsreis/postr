@@ -1,5 +1,5 @@
 import { Avatar, Box, Heading, IconButton, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AiFillStar,
   AiOutlineMessage,
@@ -11,7 +11,7 @@ import { IoEllipsisVertical } from "react-icons/io5";
 import { useModal } from "../../../context";
 import Post from "../../../models/post";
 import { UserInfo } from "../../../models/user";
-import getTimeElapsed from "./getTimeElaped";
+import getTimeElapsed from "./getTimeElapsed";
 
 const iconSize = 25;
 
@@ -23,6 +23,26 @@ interface PostCardProps {
 export default function PostCard({ post, userInfo }: PostCardProps) {
   const [isFavourite, setIsFavourite] = useState(false);
   const { setOpen } = useModal();
+
+  const now = new Date();
+
+  const [timeEllapsed, setTimeEllapsed] = useState(
+    getTimeElapsed(post.date, now)
+  );
+
+  useEffect(() => {
+    console.log(post.date);
+    console.log(post.date.getTime(), now.getTime());
+    console.log(getTimeElapsed(post.date, now));
+    const id = setInterval(() => {
+      const newNow = new Date();
+      const time = getTimeElapsed(post.date, newNow);
+      console.log(time);
+      setTimeEllapsed(time);
+    }, 30000);
+
+    return () => clearInterval(id);
+  }, []);
 
   function handleSetFavourite() {
     setIsFavourite((old) => !old);
@@ -48,7 +68,7 @@ export default function PostCard({ post, userInfo }: PostCardProps) {
             @{userInfo.username}
           </Text>
           <Text fontSize="md" color="gray.500">
-            • {getTimeElapsed(post.date, new Date())}
+            • {timeEllapsed}
           </Text>
 
           <IconButton
