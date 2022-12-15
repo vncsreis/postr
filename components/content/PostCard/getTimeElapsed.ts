@@ -1,6 +1,5 @@
 export default function getTimeElapsed(then: Date, now: Date) {
   const ellapsedMilis = now.getTime() - then.getTime();
-  console.log(ellapsedMilis);
 
   return getUnit(ellapsedMilis);
 }

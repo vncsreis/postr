@@ -32,13 +32,9 @@ export default function PostCard({ post, userInfo }: PostCardProps) {
   );
 
   useEffect(() => {
-    console.log(post.date);
-    console.log(post.date.getTime(), now.getTime());
-    console.log(getTimeElapsed(post.date, now));
     const id = setInterval(() => {
       const newNow = new Date();
       const time = getTimeElapsed(post.date, newNow);
-      console.log(time);
       setTimeEllapsed(time);
     }, 30000);
 
@@ -62,9 +58,10 @@ export default function PostCard({ post, userInfo }: PostCardProps) {
       backgroundColor="white"
       display="flex"
       borderRadius="10px"
+      mb="4"
     >
-      <Avatar name="Bob Test" />
-      <Box pl="4" display="flex" flexDir="column">
+      <Avatar name={userInfo.name} />
+      <Box pl="4" display="flex" flexDir="column" flex="1">
         <Box display="flex" flexDir="row" alignItems="center" gap="2">
           <Heading fontSize="md">{userInfo.name}</Heading>
           <Text fontSize="md" color="gray.500">
